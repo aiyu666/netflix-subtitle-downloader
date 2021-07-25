@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "name": "Netflix-subtitle-downloader",
+    "description": "Download Netflix subtitle",
+    "version": "1.0.0",
+    "icons": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    },
+    "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+    },
+    "permissions": ["storage", "activeTab", "tabs"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["src/js/content-script.js", "src/js/jquery-3.4.1.min.js"],
+        "css": ["src/css/content.css"],
+        "run_at": "document_idle"
+      }
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "background": {
+      "scripts": ["src/js/background.js", "src/js/jquery-3.4.1.min.js"]
+    }
+  }
+  
